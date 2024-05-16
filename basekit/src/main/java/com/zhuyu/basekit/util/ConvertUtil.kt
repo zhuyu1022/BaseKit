@@ -1,4 +1,4 @@
-package com.bozedu.libcommon.util
+package com.zhuyu.basekit.util
 
 import android.content.res.Resources
 

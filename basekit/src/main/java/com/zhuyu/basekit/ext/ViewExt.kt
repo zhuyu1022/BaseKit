@@ -4,7 +4,10 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageView
 
 /**
@@ -23,6 +26,21 @@ fun View.clickNoRepeat(interval: Long = 500, action: (view: View) -> Unit) {
         action(it)
     }
 }
+
+/*
+* 显示密码文本
+*/
+fun EditText.showPassword() {
+    transformationMethod = HideReturnsTransformationMethod.getInstance()
+}
+
+/**
+ * 隐藏密码文本
+ */
+fun EditText.hidePassword() {
+    transformationMethod = PasswordTransformationMethod.getInstance()
+}
+
 
 /**
  * 将view转为bitmap
