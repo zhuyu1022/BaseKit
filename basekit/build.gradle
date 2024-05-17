@@ -46,20 +46,23 @@ dependencies {
 
     //
     def activity_version = "1.9.0"
-    implementation "androidx.activity:activity-ktx:$activity_version"
+    api "androidx.activity:activity-ktx:$activity_version"
 
     // 提供ViewModel、LiveData等组件以实现MVVM架构
-    def lifecycle_version = "2.8.0"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    def lifecycle_version = "2.5.0"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    api "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+
+     //以上开源库 官网地址：https://developer.android.google.cn/jetpack/androidx/releases/activity?hl=zh-cn
+    //navigation
+//    api 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+//    api 'androidx.navigation:navigation-ui-ktx:2.3.5'
     //retrofit
-    api "com.squareup.retrofit2:retrofit:2.9.0"
-    api "com.squareup.retrofit2:converter-gson:2.9.0"
-    /**
-      以上开源库 官网地址：
-     https://developer.android.google.cn/jetpack/androidx/releases/activity?hl=zh-cn
-     */
+    api "com.squareup.retrofit2:retrofit:2.11.0"
+    api "com.squareup.retrofit2:converter-gson:2.11.0"
+    api  'com.kunminx.arch:unpeek-livedata:7.8.0'
+
 
 }

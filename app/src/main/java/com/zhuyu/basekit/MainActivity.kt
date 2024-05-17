@@ -1,16 +1,14 @@
 package com.zhuyu.basekit
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.zhuyu.basekit.base.BaseVbActivity
-import com.zhuyu.basekit.databinding.ActivityDownloadBinding
+import com.zhuyu.basekit.base.activity.BaseVmActivity
+import com.zhuyu.basekit.base.viewmodel.BaseViewModel
 import com.zhuyu.basekit.databinding.ActivityMainBinding
 import com.zhuyu.basekit.ext.clickNoRepeat
 import com.zhuyu.basekit.ui.DownloadActivity
 
-class MainActivity : BaseVbActivity<ActivityMainBinding>() {
+class MainActivity : BaseVmActivity<BaseViewModel,ActivityMainBinding>() {
 
 
 
@@ -23,5 +21,15 @@ class MainActivity : BaseVbActivity<ActivityMainBinding>() {
         }
     }
 
+    override fun showLoading(message: String) {
 
+    }
+
+    override fun dismissLoading() {
+
+    }
+
+    override fun createObserver() {
+
+    }
 }
