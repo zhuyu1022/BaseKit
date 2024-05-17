@@ -2,13 +2,16 @@ package com.zhuyu.basekit
 
 import android.content.Intent
 import android.os.Bundle
-import com.zhuyu.basekit.base.activity.BaseVmActivity
+import com.blankj.utilcode.util.FragmentUtils
+
+import com.zhuyu.basekit.base.activity.BaseVmVbActivity
 import com.zhuyu.basekit.base.viewmodel.BaseViewModel
 import com.zhuyu.basekit.databinding.ActivityMainBinding
 import com.zhuyu.basekit.ext.clickNoRepeat
+import com.zhuyu.basekit.ui.BlankFragment
 import com.zhuyu.basekit.ui.DownloadActivity
 
-class MainActivity : BaseVmActivity<BaseViewModel,ActivityMainBinding>() {
+class MainActivity : BaseVmVbActivity<BaseViewModel,ActivityMainBinding>() {
 
 
 
@@ -18,6 +21,9 @@ class MainActivity : BaseVmActivity<BaseViewModel,ActivityMainBinding>() {
         }
         mViewBind.activityResultBtn.clickNoRepeat {
             startActivity(Intent(this, ResultActivity::class.java))
+        }
+        mViewBind.fragmentBtn.clickNoRepeat {
+            FragmentUtils.add(supportFragmentManager,BlankFragment(),R.id.container)
         }
     }
 

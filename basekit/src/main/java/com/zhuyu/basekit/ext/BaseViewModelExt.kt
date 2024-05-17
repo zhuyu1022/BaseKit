@@ -2,9 +2,10 @@ package com.zhuyu.basekit.ext
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.zhuyu.basekit.base.activity.BaseVbActivity
 import kotlinx.coroutines.*
-import com.zhuyu.basekit.base.activity.BaseVmActivity
-import com.zhuyu.basekit.base.fragment.BaseVmFragment
+
+import com.zhuyu.basekit.base.fragment.BaseVbFragment
 import com.zhuyu.basekit.base.viewmodel.BaseViewModel
 import com.zhuyu.basekit.network.AppException
 import me.hgj.jetpackmvvm.network.BaseResponse
@@ -23,7 +24,7 @@ import com.zhuyu.basekit.state.paresResult
  * @param onError 失败回调
  *
  */
-fun <T> BaseVmActivity<*,*>.parseState(
+fun <T> BaseVbActivity<*>.parseState(
     resultState: ResultState<T>,
     onSuccess: (T) -> Unit,
     onError: ((AppException) -> Unit)? = null,
@@ -53,7 +54,7 @@ fun <T> BaseVmActivity<*,*>.parseState(
  * @param onError 失败回调
  *
  */
-fun <T> BaseVmFragment<*,*>.parseState(
+fun <T> BaseVbFragment<*>.parseState(
     resultState: ResultState<T>,
     onSuccess: (T) -> Unit,
     onError: ((AppException) -> Unit)? = null,
