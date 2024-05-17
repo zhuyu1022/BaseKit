@@ -23,9 +23,9 @@ abstract class BaseVmFragment<VM : BaseViewModel, VB : ViewBinding> : Fragment()
 
     lateinit var mViewModel: VM
 
-
     //该类绑定的 ViewBinding
-    var mViewBind: VB? = null
+    private var _binding: VB? = null
+    val mViewBind: VB get() = _binding!!
 
     /**
      * 当前Fragment绑定的视图布局
@@ -37,8 +37,8 @@ abstract class BaseVmFragment<VM : BaseViewModel, VB : ViewBinding> : Fragment()
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mViewBind = initBinding()
-        return mViewBind!!.root
+        _binding = initBinding()
+        return mViewBind.root
     }
 
     override fun onAttach(context: Context) {
@@ -129,6 +129,6 @@ abstract class BaseVmFragment<VM : BaseViewModel, VB : ViewBinding> : Fragment()
 
     override fun onDestroyView() {
         super.onDestroyView()
-        mViewBind = null
+        _binding = null
     }
 }

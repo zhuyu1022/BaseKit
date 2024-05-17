@@ -2,7 +2,7 @@ package com.zhuyu.basekit.base.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-
+import com.kunminx.architecture.ui.callback.UnPeekLiveData
 
 
 open class BaseViewModel : ViewModel() {
@@ -14,9 +14,9 @@ open class BaseViewModel : ViewModel() {
      */
     inner class UiLoadingChange {
         //显示加载框
-        val showDialog by lazy { MutableLiveData<String>() }
+        val showDialog by lazy { UnPeekLiveData<String>() }
         //隐藏
-        val dismissDialog by lazy { MutableLiveData<Boolean>() }
+        val dismissDialog by lazy { UnPeekLiveData<Boolean>() }
     }
 
 }
