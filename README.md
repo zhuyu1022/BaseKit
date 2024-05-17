@@ -15,7 +15,7 @@ allprojects {
 然后在 module 的 build.gradle 添加依赖框架
 
 ```groovy
-implementation 'com.github.zhuyu1022:BaseKit:0.0.6'
+implementation 'com.github.zhuyu1022:BaseKit:0.0.9'
 ```
 
 ## 后续再考虑集成点 [Engine](https://github.com/liangjingkanji/Engine) 的内容

@@ -37,7 +37,7 @@ abstract class BaseVmFragment<VM : BaseViewModel, VB : ViewBinding> : Fragment()
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = initBinding()
+        _binding = initBinding(inflater,container)
         return mViewBind.root
     }
 
@@ -57,13 +57,18 @@ abstract class BaseVmFragment<VM : BaseViewModel, VB : ViewBinding> : Fragment()
     }
 
     /**
-     *  利用反射获取ViewBinding的实例
+     * 会默认获取到对应的[ViewBinding]
      */
-    private fun initBinding(): VB {
-        return getClazz<VB>(this, 0).getMethod("inflate", LayoutInflater::class.java)
-            .invoke(null, layoutInflater) as VB
+    @Suppress("UNCHECKED_CAST")
+    open fun initBinding(inflater: LayoutInflater, container: ViewGroup?): VB {
+        return getClazz<VB>(this, 0).getMethod(
+            "inflate",
+            LayoutInflater::class.java,
+            ViewGroup::class.java,
+            Boolean::class.java
+        )
+            .invoke(null, inflater, container, false) as VB
     }
-
     /**
      * 网络变化监听 子类重写
      */
