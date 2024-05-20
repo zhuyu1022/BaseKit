@@ -42,20 +42,19 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.12.0")
     def activity_version = "1.9.0"
     api "androidx.activity:activity-ktx:$activity_version"
     def fragment_version = "1.7.1"
     api "androidx.fragment:fragment-ktx:$fragment_version"
     // 提供ViewModel、LiveData等组件以实现MVVM架构
-    def lifecycle_version = "2.5.0"
+    def lifecycle_version = "2.7.0"
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     api "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     api "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
-   // api "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
      //以上开源库 官网地址：https://developer.android.google.cn/jetpack/androidx/releases/activity?hl=zh-cn
     //navigation
 //    api 'androidx.navigation:navigation-fragment-ktx:2.3.5'

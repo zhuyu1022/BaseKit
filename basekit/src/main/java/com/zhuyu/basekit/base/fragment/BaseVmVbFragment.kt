@@ -1,51 +1,60 @@
 package com.zhuyu.basekit.base.fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.zhuyu.basekit.base.viewmodel.BaseViewModel
-import com.zhuyu.basekit.ext.getVmClazz
+import com.zhuyu.basekit.ext.getClazz
+import com.zhuyu.basekit.ext.inflateBindingWithGeneric
 
-/**
- * 作者　: hegaojian
- * 时间　: 2019/12/12
- * 描述　: ViewModelFragment基类，自动把ViewModel注入Fragment和 ViewBinding 注入进来了
- * 需要使用 ViewBinding 的清继承它
- */
-abstract class BaseVmVbFragment<VM : BaseViewModel, VB : ViewBinding> : BaseVbFragment<VB>() {
+
+abstract class BaseVmVbFragment<VM : BaseViewModel, VB : ViewBinding> : Fragment() {
 
 
     lateinit var mViewModel: VM
 
+    //该类绑定的 ViewBinding
+    private var _binding: VB? = null
+    val mViewBind: VB get() = _binding!!
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = inflateBindingWithGeneric(inflater, container, false)
+        return mViewBind.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mViewModel = createViewModel()
+        createViewModel()
         initView(savedInstanceState)
         createObserver()
         registorDefUIChange()
+    }
+    /**
+     * 初始化view
+     */
+    abstract fun initView(savedInstanceState: Bundle?)
+    abstract fun createObserver()
+    abstract fun showLoading(message: String = "请求网络中...")
+    abstract fun dismissLoading()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     /**
      * 创建viewModel
      */
-    private fun createViewModel(): VM {
-        return ViewModelProvider(this)[getVmClazz(this)]
+    private fun createViewModel() {
+        mViewModel = ViewModelProvider(this)[getClazz(this)]
+        // return ViewModelProvider(this)[getVmClazz(this)]
     }
-
-    /**
-     * 初始化view
-     */
-    abstract override fun initView(savedInstanceState: Bundle?)
-
-
-    /**
-     * 创建观察者
-     */
-    abstract fun createObserver()
 
 
     /**

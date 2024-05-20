@@ -2,6 +2,7 @@ package com.zhuyu.basekit
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.blankj.utilcode.util.FragmentUtils
 
 import com.zhuyu.basekit.base.activity.BaseVmVbActivity
@@ -14,7 +15,7 @@ import com.zhuyu.basekit.viewmodel.MainViewModel
 
 class MainActivity : BaseVmVbActivity<MainViewModel,ActivityMainBinding>() {
 
-
+//val mainViewModel:MainViewModel by viewModels()
 
     override fun initView(savedInstanceState: Bundle?) {
         mViewBind.downloadBtn.clickNoRepeat {
@@ -25,8 +26,10 @@ class MainActivity : BaseVmVbActivity<MainViewModel,ActivityMainBinding>() {
         }
         mViewBind.fragmentBtn.clickNoRepeat {
            // FragmentUtils.add(supportFragmentManager,BlankFragment(),R.id.container)
-            mViewModel.getBanner()
+
         }
+        //mainViewModel.getBanner()
+        mViewModel.getBanner()
     }
 
     override fun onStart() {
