@@ -35,7 +35,7 @@ abstract class BaseNetworkApi {
      */
     private val okHttpClient: OkHttpClient
         get() {
-            var builder = okHttpClient.newBuilder()
+            var builder = OkHttpClient.Builder()
             builder = setHttpClientBuilder(builder)
             return builder.build()
         }

@@ -10,8 +10,9 @@ import com.zhuyu.basekit.databinding.ActivityMainBinding
 import com.zhuyu.basekit.ext.clickNoRepeat
 import com.zhuyu.basekit.ui.BlankFragment
 import com.zhuyu.basekit.ui.DownloadActivity
+import com.zhuyu.basekit.viewmodel.MainViewModel
 
-class MainActivity : BaseVmVbActivity<BaseViewModel,ActivityMainBinding>() {
+class MainActivity : BaseVmVbActivity<MainViewModel,ActivityMainBinding>() {
 
 
 
@@ -23,10 +24,15 @@ class MainActivity : BaseVmVbActivity<BaseViewModel,ActivityMainBinding>() {
             startActivity(Intent(this, ResultActivity::class.java))
         }
         mViewBind.fragmentBtn.clickNoRepeat {
-            FragmentUtils.add(supportFragmentManager,BlankFragment(),R.id.container)
+           // FragmentUtils.add(supportFragmentManager,BlankFragment(),R.id.container)
+            mViewModel.getBanner()
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+
+    }
     override fun showLoading(message: String) {
 
     }
